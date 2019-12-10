@@ -5,6 +5,7 @@ var htmlWebpackPlugin = require('html-webpack-plugin')
 //当以命令行形式运行webpack或webpack-dev-server的时候，工具会发现，我们并没有提供要打包
 //的文件 入口和出口文件，此时，他会检查项目根目录中的配置文件，并读取这个文件，就拿到了导出的这个配置对象
 //然后根据这个对象，进行打包构建
+
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 module.exports = {
  entry:path.join(__dirname,'./src/index.js'),

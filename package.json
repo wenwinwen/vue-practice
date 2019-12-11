@@ -15,6 +15,7 @@
     "bootstrap": "^4.4.1",
     "html-webpack-plugin-for-multihtml": "^2.30.2",
     "mint-ui": "^2.2.13",
+    "moment": "^2.24.0",
     "vue": "^2.6.10",
     "vue-resource": "^1.5.1",
     "vue-router": "^3.1.3"

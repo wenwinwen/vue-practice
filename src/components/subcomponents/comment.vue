@@ -35,7 +35,7 @@ export default {
     },
     methods:{
         getComment(){//获取评论
-            this.$http.get("com"+this.pageIndex+".json").then(result=>{
+            this.$http.get("data"+this.pageIndex+".json").then(result=>{
                 if(result.body.status === 0){
                     //每当新评论数据的时候，不要把老数据清空覆盖，而是应该以老数据拼接上新数据
                     this.comments= this.comments.concat(result.body.message)

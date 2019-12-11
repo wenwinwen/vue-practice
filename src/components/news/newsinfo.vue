@@ -59,7 +59,5 @@ color: #226aff;
 display: flex;
 justify-content: space-between;
 }
-.content{
 
-}
 </style>

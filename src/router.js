@@ -5,6 +5,8 @@ import home from './components/tabbar/home.vue'
 import member from './components/tabbar/member.vue'
 import search from './components/tabbar/search.vue'
 import shopcar from './components/tabbar/shopcar.vue'
+import newslist from './components/news/newslist.vue'
+import newInfo from './components/news/newsinfo.vue'
 
 
 var router = new VueRouter({
@@ -13,7 +15,9 @@ var router = new VueRouter({
     {path:'/home', component:home},
     {path:'/member', component:member},
     {path:'/shopcar', component:shopcar},
-    {path:'/search', component:search}
+    {path:'/search', component:search},
+    {path:'/home/newslist', component:newslist},
+    {path:'/home/newsinfo/:id',component:newInfo}
 
     ],
     linkActiveClass:'mui-active'//覆盖默认的路由高亮类，默认的类叫做router-link-active

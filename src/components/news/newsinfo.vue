@@ -28,9 +28,10 @@ export default {
     },
     methods:{
         getNewsInfo(){//获取新闻详情
-          this.$http.get('newsinfo.json').then(result=>{
-              if(result.body.status ===0){
-                 this.newsinfo= result.body.message[this.id];
+          this.$axios.get('../../../static/newsinfo.json').then(result=>{
+              console.log(result)
+              if(result.data.status ===0){
+                 this.newsinfo= result.data.message[this.id];
               }else{
                 
               }

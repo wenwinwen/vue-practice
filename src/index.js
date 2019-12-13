@@ -39,6 +39,13 @@ Vue.http.options.emulateJSON = true;
  
 Vue.use(Lazyload);
 
+
+
+//导入axios
+import axios from 'axios';
+Vue.prototype.$axios = axios;
+ 
+
 //导入mui的样式
 import './lib/css/mui.min.css'
 import './lib/css/icons-extra.css'

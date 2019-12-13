@@ -20,6 +20,11 @@ import MintUI from 'mint-ui'
 Vue.use(MintUI)
 import 'mint-ui/lib/style.css'
 
+
+//安装我们的图片预览插件
+import VuePreview from 'vue-preview'
+Vue.use(VuePreview)
+
 //定义全局过滤器
 import moment from 'moment'
 Vue.filter('dataFormat', function(datastr, pattern = "YYYY-MM-DD HH:mm:ss"){

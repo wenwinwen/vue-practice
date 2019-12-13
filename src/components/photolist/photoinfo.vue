@@ -7,7 +7,7 @@
         </p>
         <hr>
         <!--缩略图-->
-
+         <vue-preview height="100px" width="150px" :slides="list" @close="handleClose" v-for="(item,i) in list" :key="i"></vue-preview>
         <!--图片内容区域--->
         <div class="content" v-html="photoinfo.content"></div>
 
@@ -24,11 +24,13 @@ export default {
         return{
             id: this.$route.params.id, //从路由中获取到的图片id
             photoinfo:{},
-            pageIndex:1
+            pageIndex:1,
+            list:[] // 缩略图数组
         }
     },
     created(){
       this.getphotoInfo()
+      this.getThumbs()
     },
     methods:{
         getphotoInfo(){
@@ -38,7 +40,23 @@ export default {
                     this.photoinfo= result.body.message[0]
                 }
             })
-        }
+        },
+        getThumbs(){
+            this.$http.get('picshar.json').then(result=>{
+                if(result.body.status === 0){
+                    //循环每个图片数据，补全图片的宽和高
+                    result.body.message.forEach(item=> {
+                        item.w=600
+                        item.h=400
+                    })
+                    //把完整的数据保存到list中
+                    this.list=result.body.message
+                }
+            })
+        },
+        handleClose () {
+        console.log('close event')
+      }
     },
     components:{
         //注册评论子组件

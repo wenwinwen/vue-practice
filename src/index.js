@@ -11,10 +11,15 @@ import{Header} from 'mint-ui'
 Vue.component(Header.name,Header)
 
 //引入轮播图
-import { Swipe, SwipeItem ,Button } from 'mint-ui';
+import { Swipe, SwipeItem ,Button,Lazyload } from 'mint-ui';
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
 Vue.component(Button.name, Button);
+Vue.use(Lazyload);
+import MintUI from 'mint-ui'
+Vue.use(MintUI)
+import 'mint-ui/lib/style.css'
+
 //定义全局过滤器
 import moment from 'moment'
 Vue.filter('dataFormat', function(datastr, pattern = "YYYY-MM-DD HH:mm:ss"){
@@ -25,7 +30,9 @@ Vue.filter('dataFormat', function(datastr, pattern = "YYYY-MM-DD HH:mm:ss"){
 import VueResource from 'vue-resource'
 Vue.use(VueResource)
 Vue.http.options.root='../../../static'
-
+Vue.http.options.emulateJSON = true;
+ 
+Vue.use(Lazyload);
 
 //导入mui的样式
 import './lib/css/mui.min.css'
@@ -40,5 +47,9 @@ import router from './router.js'
 var vm = new Vue({
     el:'#app',
     render:c => c(app),
-    router //把路由挂载到实例上
+    router, //把路由挂载到实例上
+    http: {
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+    }
+
 })

@@ -1,6 +1,10 @@
 <template>
 <div class="goods-list">
-<div class="good-item" v-for="(item,i) in goodslist" :key="i">
+<!--在网页中有两种跳转方式:
+1.使用a标签叫做标签跳转
+2.使用window.location.href的形式，叫做编程式导航
+-->
+<router-link to="/home/goodinfo" class="good-item" v-for="(item,i) in goodslist" :key="i">
     <img :src="item.url" alt="">
     <h1 class="title">{{item.title}}</h1>
     <div class="info">
@@ -13,7 +17,7 @@
        <span>剩{{item.stock_quantity}}件</span>
    </p>
     </div>
-</div>
+</router-link>
 
 <mt-button type="danger" size="large" @click="getmore" >加载更多</mt-button>
 </div>    
@@ -47,6 +51,10 @@ export default {
         }
     }
 }
+// 注意js的形式进行路由导航
+// 注意: 一定要区分this.$route和this.$router这两个对象
+//其中: this.$route是路由参数对象，所有路由中的参数
+//其中: this.$router是一个路由导航对象，用它可以方便使用js代码，实现路由的前进,后退，跳转到新的url地址
 </script>
 
 

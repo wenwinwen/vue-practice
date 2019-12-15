@@ -70,4 +70,5 @@ export default{
 .mui-media-body{
     font-size: 13px
 }
+
 </style>

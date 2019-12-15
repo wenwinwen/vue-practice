@@ -62,7 +62,7 @@ import number from '../subcomponents/numberbox.vue'
 export default {
     data(){
         return{
-            id: this.$route.params.id,
+            id: 123,
             lunbo:[],
             goodsinfo:{},
             ballFlag:false,//控制小球隐藏和显示的标识符
@@ -72,6 +72,7 @@ export default {
     created(){
         this.getlunbo()
         this.getgoodsinfo()
+ 
     },
     methods:{
         getlunbo(){
@@ -100,6 +101,16 @@ export default {
         addToShopCar(){
             //添加到购物车
             this.ballFlag=!this.ballFlag
+            //拼接出一个，要保存到store中的car数组里的商品信息对象
+            var goodsinfo={
+            id:this.id,
+            count: this.selectedCount,
+            price:this.goodsinfo.sell_price, 
+            selectd:true
+            }
+            //调用store中的mutations 来将商品加入购物车
+            this.$store.commit('addToCar', goodsinfo)
+
         },
         beforeEnter(el){
             el.style.transform="translate(0,0)";
@@ -131,7 +142,8 @@ export default {
         },
         getSelectdCount(count){
             //当子组件把选中的数量传递给父组件的时候，把选中的值保存到data上
-            this.selectedCount= count
+            this.selectedCount=count;
+            console.log(this.selectedCount)
         }
     },
     components:{

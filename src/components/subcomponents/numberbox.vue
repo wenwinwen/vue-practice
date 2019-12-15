@@ -22,7 +22,10 @@ export default {
     props:["max"],
     watch:{
         'max':function(newVal, oldVal){
-            
+            //使用jsAPI设置numbox最大值
+            mui(".mui-numbox")
+            .numbox()
+            .setOption('max',newVal)
         }
     }
 }
